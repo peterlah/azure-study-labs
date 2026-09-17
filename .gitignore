@@ -2,12 +2,23 @@
 .idea/
 .vscode/
 
-.terraform/
+# Terraform
+**/.terraform/*
 *.tfstate
 *.tfstate.*
 tfplan
+tfplan*
 *.tfplan
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
 
+# Credentials and local environment files
 .env
 .env.*
 !.env.example
@@ -17,6 +28,7 @@ kubeconfig
 *.pfx
 *.p12
 
+# Language and build outputs
 .venv/
 __pycache__/
 *.pyc

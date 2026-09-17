@@ -1,0 +1,4 @@
+subscription_id = "00000000-0000-0000-0000-000000000000"
+
+# 같은 구독에서 이름이 겹치면 자신의 이름으로 바꿉니다.
+resource_group_name = "rg-azure-study-terraform-01"

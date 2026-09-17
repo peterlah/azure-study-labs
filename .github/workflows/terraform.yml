@@ -1,0 +1,33 @@
+name: Terraform 검사
+
+on:
+  push:
+    paths:
+      - "labs/terraform/**"
+      - ".github/workflows/terraform.yml"
+  pull_request:
+    paths:
+      - "labs/terraform/**"
+      - ".github/workflows/terraform.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  resource-group:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: labs/terraform/01-resource-group
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.15.5
+      - name: 형식 검사
+        run: terraform fmt -check
+      - name: Provider 초기화
+        run: terraform init -backend=false -input=false
+      - name: 구성 검사
+        run: terraform validate -no-color
